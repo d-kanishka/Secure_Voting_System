@@ -5,7 +5,8 @@ from config import Config
 import hashlib
 
 client = MongoClient(Config.MONGO_URI) # monogodb connection
-db = client.get_default_database()
+db = client["voting_db"]
+
 
 # Collections
 users = db.users
