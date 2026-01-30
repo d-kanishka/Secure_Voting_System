@@ -1,10 +1,27 @@
+import certifi
 from pymongo import MongoClient, ASCENDING
 from bson.objectid import ObjectId
 import datetime
 from config import Config
 import hashlib
 
-client = MongoClient(Config.MONGO_URI) # monogodb connection
+import os
+from urllib.parse import quote_plus
+from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv() 
+
+user = os.getenv("MONGO_USER")
+pw = quote_plus(os.getenv("MONGO_PASSWORD"))
+uri = f"mongodb+srv://{user}:{pw}@cluster0.xdxdrm1.mongodb.net/voting_db?authSource=admin&retryWrites=true&w=majority"
+
+client = MongoClient(uri, tls=True, tlsCAFile=certifi.where())
+try:
+    print("server_info OK:", client.server_info())
+except Exception as e:
+    print("connect failed:", type(e), e)
+    
 db = client["voting_db"]
 
 
