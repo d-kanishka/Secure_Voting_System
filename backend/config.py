@@ -1,8 +1,10 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 class Config:
     # Database & JWT
-    MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017/voting_db")
+    MONGO_URI = os.environ.get("MONGO_URI")
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "change-me-to-a-strong-secret")
     JWT_ACCESS_TOKEN_EXPIRES = int(os.environ.get("JWT_EXPIRES_SECONDS", 3600))
 

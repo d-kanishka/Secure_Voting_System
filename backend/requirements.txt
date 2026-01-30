@@ -8,3 +8,5 @@ pyotp
 qrcode
 pillow
 python-dotenv
+dnspython
+gunicorn

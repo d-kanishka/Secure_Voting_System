@@ -25,6 +25,9 @@ import qrcode
 from PIL import Image
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
+from dotenv import load_dotenv
+load_dotenv()
+
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config["JWT_SECRET_KEY"] = Config.JWT_SECRET_KEY
