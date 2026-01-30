@@ -10,3 +10,4 @@ pillow
 python-dotenv
 dnspython
 gunicorn
+certifi>=2026.1.4
